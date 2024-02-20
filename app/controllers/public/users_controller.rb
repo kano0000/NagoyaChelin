@@ -1,5 +1,4 @@
-class Admin::StoresController < ApplicationController
-  before_action :authenticate_admin!
+class Public::UsersController < ApplicationController
   
   def index
     
@@ -16,4 +15,5 @@ class Admin::StoresController < ApplicationController
   def update
     
   end
+  
 end
