@@ -1,24 +1,24 @@
-# README
+# なごやしゅらん
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+なごや人のなごや人によるなごや人のためのグルメサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+### ターゲットユーザ
+ - 愛知県に住んでおり、美味しいお店を調べたい人
+ - 愛知県に旅行や出張に来てなごやグルメを調べたい人
 
-* Database creation
+### 主な利用シーン
+ - 一緒に行く人や用途に応じて行くお店を決めたい時
+ - 地元民のおすすめのお店を調べたい時
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
