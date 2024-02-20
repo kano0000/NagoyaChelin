@@ -10,14 +10,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
-  
-  
   scope module: :public do
     root to: 'homes#top'
+    resources :stores
   end
   
   namespace :admin do
     root to: 'homes#top'
+    resources :stores, only: [:index, :show, :edit]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
