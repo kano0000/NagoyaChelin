@@ -24,6 +24,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to new_store_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-circle-plus"></i> Post
+            <% end %>
+          </li>          
+          <li>
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> Log out
             <% end %>

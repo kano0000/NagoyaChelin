@@ -2,36 +2,37 @@ class Public::StoresController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @shop = Shop.new
+    @store = Store.new
   end
 
   def create
-    @shop = current_user.shops.new(shop_params)
-    if @shop.save
+    @store = Store.new(store_params)
+    @store.user_id = current_user.id
+    if @store.save
       flash[:notice] = "投稿しました"
-      redirect_to shops_path
+      redirect_to stores_path
     else
       render :new
     end
   end
 
   def index
-    @shops = Shop.all
+    @stores = Store.all
   end
 
   def show
-    @shop = Shop.find(params[:id])
+    @store = Store.find(params[:id])
   end
 
   def edit
-    @shop = Shop.find(params[:id])
+    @store = Store.find(params[:id])
   end
 
   def update
-    @shop = Shop.find(params[:id])
-    if @shop.update(shop_params)
+    @store = Store.find(params[:id])
+    if @store.update(store_params)
       flash[:notice] = "更新しました"
-      redirect_to shops_path
+      redirect_to stores_path
     else
       render :edit
     end
@@ -45,7 +46,7 @@ class Public::StoresController < ApplicationController
 
   private
 
-  def shop_params
+  def store_params
     params.require(:store).permit(:name, :description, :address, :store_image)
   end
 

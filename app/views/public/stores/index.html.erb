@@ -1,1 +1,25 @@
-<h1>StoreIndex</h1>
+<div class="card-list-container py-5">
+  <% @stores.each do |store| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= link_to store_path(store.id) do %>
+      <%= image_tag store.get_store_image(200,200), class:"card-img-top"; %>
+    <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= image_tag store.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to(store_path(store.id), class:"text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= store.name %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-text">紹介：<%= store.description %></p>
+          <span><i class="fas fa-user"></i> By <%= store.user.name %> ｜ </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
