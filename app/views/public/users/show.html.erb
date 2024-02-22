@@ -1,1 +1,27 @@
-<h1>UserShow</h1>
+<div class = "container mt-5">
+  <div class = "row">
+    <div class = "col-8 mx-auto">
+      <table class = "table table-borderd">
+        <tr>
+        </tr>
+          <%= image_tag @user.get_profile_image(100,100) %>
+        <tr>
+          <th>name</th>
+          <th><%= @user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= @user.introduction %></th>
+        </tr>
+        <!--<tr>-->
+        <!--  <th>follows</th>-->
+        <!--  <th><%#= link_to @user.followings.count, user_followings_path(user) %></th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--  <th>followers</th>-->
+        <!--  <th><%#= link_to @user.followers.count, user_followers_path(user) %></th>-->
+        <!--</tr>-->
+      </table>
+    </div>
+  </div>
+</div>
