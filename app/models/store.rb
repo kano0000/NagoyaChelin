@@ -4,7 +4,8 @@ class Store < ApplicationRecord
 
   belongs_to :user
   has_many :store_comments, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
+  
   has_one_attached :store_image
 
 
@@ -14,6 +15,10 @@ class Store < ApplicationRecord
       store_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     store_image.variant(resize_to_limit: [width,height]).processed
+  end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end

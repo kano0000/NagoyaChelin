@@ -18,7 +18,7 @@
           <% end %>
           <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|　
           <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|　  
-          <i class="fa-solid fa-heart"></i> <%#= @store.いいね.count %>
+          <%= render "public/favorites/btn", store: @store %>
           </p>
       </div>
       <div>

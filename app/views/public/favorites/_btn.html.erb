@@ -1,0 +1,9 @@
+<% if store.favorited_by?(current_user) %>
+  <%= link_to store_favorites_path(store), method: :delete, remote: true do %>
+    <i class="fa-solid fa-heart text-red"> <%= store.favorites.count %></i>
+  <% end %>
+<% else %>
+  <%= link_to store_favorites_path(store), method: :post, remote: true do %>
+    <i class="fa-solid fa-heart text-gray"> <%= store.favorites.count %></i>
+  <% end %>
+<% end %>
