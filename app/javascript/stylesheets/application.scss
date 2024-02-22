@@ -1,5 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: #f8f4e6;
+}
+
 .text-red {
   color: #ff0000;
+}
+
+.text-gray {
+  color: #7d7d7d;
 }
