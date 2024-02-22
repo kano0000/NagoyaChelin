@@ -22,6 +22,7 @@ class Public::StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+    @store_comment = StoreComment.new
   end
 
   def edit

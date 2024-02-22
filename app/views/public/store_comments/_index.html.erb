@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% store.store_comments.each do |store_comment| %>
+    <tr>
+      <td>
+        <%= link_to user_path(store_comment.user) do %>
+          <%= image_tag store_comment.user.get_profile_image(50,50) %><br>
+          <%= store_comment.user.name %>
+        <% end %>
+      </td>
+      <td><%= store_comment.comment %></td>
+      <td>
+        <% if store_comment.user == current_user %>
+          <%= link_to "Destroy", store_store_comment_path(store_comment.store, store_comment), method: :delete, class: "btn btn-danger", remote: true %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

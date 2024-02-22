@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root to: 'homes#top'
-    resources :stores
+    resources :stores do
+      resources :store_comments, only: [:create, :destroy]
+    end
     # 退会機能追加する
     resources :users, only: [:index, :show, :edit, :update]
   end

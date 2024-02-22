@@ -3,6 +3,7 @@ class Store < ApplicationRecord
   validates :description, presence: true, length: {maximum: 200}
 
   belongs_to :user
+  has_many :store_comments, dependent: :destroy
 
   has_one_attached :store_image
 
