@@ -2,11 +2,13 @@
   <div class = "row">
     <div class = "col-12 mx-auto">
       <%= render "public/users/info", user: @user %>
-      <% if @stores.exists? %>
-        <%= render "public/stores/index", stores: @stores %>
-      <% else %>
-        <h2 class="text-center my-3">投稿がありません</h2>
-      <% end %>
+      <div class="border-top">
+        <% if @stores.exists? %>
+          <%= render "public/stores/index", stores: @stores %>
+        <% else %>
+          <h2 class="text-center my-3">投稿がありません</h2>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

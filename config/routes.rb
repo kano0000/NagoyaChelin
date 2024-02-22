@@ -17,7 +17,11 @@ Rails.application.routes.draw do
       resources :store_comments, only: [:create, :destroy]
     end
     # 退会機能追加する
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
+    end
   end
   
   namespace :admin do

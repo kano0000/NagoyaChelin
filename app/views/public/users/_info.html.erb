@@ -1,28 +1,32 @@
-<table class = "table table-borderd">
-  <tr>
-  </tr>
-    <%= image_tag user.get_profile_image(100,100) %>
-  <tr>
-    <th>name</th>
-    <th><%= user.name %></th>
-  </tr>
-  <tr>
-    <th>introduction</th>
-    <th><%= user.introduction %></th>
-  </tr>
-  <!--<tr>-->
-  <!--  <th>follows</th>-->
-  <!--  <th><%#= link_to @user.followings.count, user_followings_path(user) %></th>-->
-  <!--</tr>-->
-  <!--<tr>-->
-  <!--  <th>followers</th>-->
-  <!--  <th><%#= link_to @user.followers.count, user_followers_path(user) %></th>-->
-  <!--</tr>-->
-</table>
-<% if @user == current_user %>
-  <div>
-    <%= link_to edit_user_path(user), class: "col-3 btn btn-warning btn-block" do %>
-      <i class="fa-solid fa-pen-to-square"></i>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-4 text-center">
+      <%= image_tag user.get_profile_image(130,130) %>
+      <div class="my-3">
+        <% if @user == current_user %>
+          <%= link_to edit_user_path(user), class: "btn btn-warning btn-block" do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        <% else %>
+          <%= render "public/relationships/btn", user: user %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-8">
+      <table class = "table table-borderless">
+        <tr>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>
+            フォロー:　<%= link_to user.followings.count, user_followings_path(user) %> 人
+            フォロワー:　<%= link_to user.followers.count, user_followers_path(user) %> 人
+          </th>
+        </tr>
+        <tr>
+          <th><%= user.introduction %></th>
+        </tr>
+      </table>
+    </div>
   </div>
-<% end %>
+</div>

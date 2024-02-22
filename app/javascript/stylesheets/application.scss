@@ -1,8 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
 
-body {
-  background-color: #f8f4e6;
-}
 
 .text-red {
   color: #ff0000;
@@ -10,4 +7,13 @@ body {
 
 .text-gray {
   color: #7d7d7d;
+}
+
+.bg-danger {
+  background-color: #331b16 !important;
+}
+
+footer {
+  background-color: #331b16;
+  color: #fff;
 }

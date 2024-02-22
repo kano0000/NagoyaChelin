@@ -4,14 +4,8 @@
       <div class="text-center">
         <%= image_tag @store.get_store_image(500,500) %><br>
         <h2 class=py-3><strong><%= @store.name %></strong></h2>
-        <% if @store.user == current_user %>
-          <div class="col-5 mx-auto mb-3">
-            <%= link_to edit_store_path(@store), class: "btn btn-warning btn-block" do %>
-              <i class="fa-solid fa-pen-to-square"></i>
-            <% end %>
-          </div>
-        <% end %>
-        <p>
+        <p><%= @store.description %></p>
+        <div>
           <i class="fa-solid fa-circle-user"></i> 
           <%= link_to user_path(@store.user) do %>
             <%= @store.user.name %>　|　
@@ -19,20 +13,20 @@
           <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|　
           <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|　  
           <%= render "public/favorites/btn", store: @store %>
-          </p>
+        </div>
+        <% if @store.user == current_user %>
+          <div class="col-5 mx-auto my-3">
+            <%= link_to edit_store_path(@store), class: "btn btn-warning btn-block" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <div>
+      <div class="border-top col-12 mx-auto">
+        <h4 class="m-3">コメント</h4>
+        <%= render "public/store_comments/index", store: @store %>
+        <%= render "public/store_comments/form", store: @store, store_comment: @store_comment %>
       </div>
-
-      <table class = "table">
-        <tr>
-          <th style="width: 30%">紹介文</th>
-          <th><%= @store.description %></th>
-        </tr>
-      </table>
-      <h4 class="m-3">コメント</h4>
-      <%= render "public/store_comments/index", store: @store %>
-      <%= render "public/store_comments/form", store: @store, store_comment: @store_comment %>
     </div>
   </div>
 </div>
