@@ -1,0 +1,28 @@
+<table class = "table table-borderd">
+  <tr>
+  </tr>
+    <%= image_tag user.get_profile_image(100,100) %>
+  <tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
+  </tr>
+  <!--<tr>-->
+  <!--  <th>follows</th>-->
+  <!--  <th><%#= link_to @user.followings.count, user_followings_path(user) %></th>-->
+  <!--</tr>-->
+  <!--<tr>-->
+  <!--  <th>followers</th>-->
+  <!--  <th><%#= link_to @user.followers.count, user_followers_path(user) %></th>-->
+  <!--</tr>-->
+</table>
+<% if @user == current_user %>
+  <div>
+    <%= link_to edit_user_path(user), class: "col-5 btn btn-warning btn-block" do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
+  </div>
+<% end %>
