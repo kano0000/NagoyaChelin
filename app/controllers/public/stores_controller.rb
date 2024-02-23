@@ -17,7 +17,14 @@ class Public::StoresController < ApplicationController
   end
 
   def index
-    @stores = Store.all
+    respond_to do |format|
+      format.html do
+        @stores = Store.all
+      end
+      format.json do
+        @Stores = Store.all
+      end
+    end
   end
 
   def show
