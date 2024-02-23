@@ -12,7 +12,8 @@
           <% end %>
           <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|　
           <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|　  
-          <%= render "public/favorites/btn", store: @store %>
+          <%= render "public/favorites/btn", store: @store %><br>
+          <i class="fa-solid fa-location-dot"></i><%= @store.address %>
         </div>
         <% if @store.user == current_user %>
           <div class="col-5 mx-auto my-3">

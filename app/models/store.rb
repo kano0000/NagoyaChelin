@@ -1,12 +1,16 @@
 class Store < ApplicationRecord
-  validates :name, presence: true
-  validates :description, presence: true, length: {maximum: 200}
-
+  geocoded_by :address
+  after_validation :geocode
+  
   belongs_to :user
   has_many :store_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
   has_one_attached :store_image
+  
+  validates :name, presence: true
+  validates :description, presence: true, length: {maximum: 200}
+  validates :address, presence: true
 
 
   def get_store_image(width,height)

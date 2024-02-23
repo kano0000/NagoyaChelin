@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-4 text-center">
-      <%= image_tag user.get_profile_image(130,130) %>
+      <%= image_tag user.get_profile_image(100,100) %>
       <div class="my-3">
-        <% if @user == current_user %>
+        <% if user == current_user %>
           <%= link_to edit_user_path(user), class: "btn btn-warning btn-block" do %>
             <i class="fa-solid fa-pen-to-square"></i>
           <% end %>
@@ -25,6 +25,13 @@
         </tr>
         <tr>
           <th><%= user.introduction %></th>
+        </tr>
+        <tr>
+          <th>
+            <%= link_to favorites_user_path(user), class:"btn btn-danger" do %>
+              <i class="fa-solid fa-heart"></i> いいねリスト
+            <% end %>
+          </th>
         </tr>
       </table>
     </div>

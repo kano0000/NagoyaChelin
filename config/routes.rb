@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # 顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -21,7 +22,11 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
+      member do
+        get :favorites 
+     end
     end
+    resource :map, only: [:show]
   end
   
   namespace :admin do

@@ -22,6 +22,12 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:store_id)
+    @favorite_stores = Store.find(favorites)
+  end
 
   private
 
