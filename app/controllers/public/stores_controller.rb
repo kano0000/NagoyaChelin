@@ -17,15 +17,23 @@ class Public::StoresController < ApplicationController
   end
 
   def index
+    @stores = Store.all
     respond_to do |format|
-      format.html do
-        @stores = Store.all
-      end
-      format.json do
-        @Stores = Store.all
-      end
+      format.html
+      format.json { render 'index' }
     end
   end
+
+  # def index
+  #   respond_to do |format|
+  #     format.html do
+  #       @stores = Store.all
+  #     end
+  #     format.json do
+  #       @stores = Store.all
+  #     end
+  #   end
+  # end
 
   def show
     @store = Store.find(params[:id])
@@ -55,7 +63,7 @@ class Public::StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:name, :description, :address, :store_image)
+    params.require(:store).permit(:name, :description, :address, :food_image)
   end
 
 end

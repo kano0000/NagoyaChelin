@@ -19,7 +19,7 @@ async function initMap() {
 
  const response = await fetch("/stores.json").then((res) => res.json()).catch(error => console.error(error))
   if (response.ok) {
-    const items = response.data;
+    const items = response.data.items
     items.forEach((item) => {
       const marker = new google.maps.Marker({
         position: new google.maps.LatLng(item.latitude, item.longitude),
