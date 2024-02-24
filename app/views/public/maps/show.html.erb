@@ -3,13 +3,14 @@
 </div>
 
 <script>
-let map
+let map;
 let marker = [];
+let infoWindow = [];
 
 function initMap(){
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 40.7828, lng:-73.9653},
+    center: {lat: 35.170915, lng: 136.881537},
     zoom: 12,
   });
 
@@ -20,8 +21,35 @@ function initMap(){
     map: map
   });
 
+  infoWindow[<%= index %>] = new google.maps.InfoWindow({ 
+    content: `
+      <div class="information container p-0">
+        <div class="mb-3 d-flex align-items-center">
+          <p class="lead m-0 font-weight-bold"><%= store.name %></p>
+        </div>
+        <div class="mb-3 text-center">
+        <%= link_to store_path(store) do %>
+          <%= image_tag store.get_food_image(100,100), class: "thumbnail", loading: "lazy" %>
+        <% end %>
+        </div>
+        <div>
+          <p class="font-weight-bold"><i class="fa-solid fa-circle-user"></i> <%= store.user.name %></p>
+          <p class="text-muted"><%#= store.タグ %></p>
+        </div>
+      </div>
+    `,
+  });
+
+  markerEvent(<%= index %>); 
 <% end %>
 
+}
+
+// マーカーにクリックイベントを追加
+function markerEvent(index) {
+    marker[index].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[index].open(map, marker[index]); // 吹き出しの表示
+  });
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["API_KEY"] %>&callback=initMap" async defer></script>
