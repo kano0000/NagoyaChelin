@@ -2,4 +2,26 @@
   <div id="map"></div>
 </div>
 
-<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+<script>
+let map
+let marker = [];
+
+function initMap(){
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+    zoom: 12,
+  });
+
+<% Store.all.each_with_index do |store, index| %>
+
+  marker[<%= index %>] = new google.maps.Marker({
+    position:  {lat: <%= store.latitude %>, lng: <%= store.longitude %>},
+    map: map
+  });
+
+<% end %>
+
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["API_KEY"] %>&callback=initMap" async defer></script>

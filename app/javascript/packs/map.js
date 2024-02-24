@@ -4,30 +4,49 @@
 });
 
 
-// ライブラリの読み込み
-let map;
 
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
 
-  // 地図の中心と倍率は公式から変更しています。
-  map = new Map(document.getElementById("map"), {
-    center: { lat: 35.170915, lng: 136.881537 }, 
-    zoom: 15,
-    mapTypeControl: false
-  });
+// const response = await fetch("/stores.json").then((res) => res.json()).catch(error => console.error(error))
+//   if (response.ok) {
+//     const items = response.data.items
+//     items.forEach((item) => {
+//       const marker = new google.maps.Marker({
+//         position: new google.maps.LatLng(item.latitude, item.longitude),
+//         map,
+//         title: item.name,
+//       });
+//     });
+//   }
 
- const response = await fetch("/stores.json").then((res) => res.json()).catch(error => console.error(error))
-  if (response.ok) {
-    const items = response.data.items
-    items.forEach((item) => {
-      const marker = new google.maps.Marker({
-        position: new google.maps.LatLng(item.latitude, item.longitude),
-        map,
-        title: item.name,
-      });
-    });
-  }
+
+
+// // サーバーからJSONデータを非同期で取得
+// const response = await fetch("/stores.json")
+//   .then((res) => res.json()) // JSONデータに変換
+//   .catch(error => console.error(error)); // エラーが発生した場合はコンソールに表示
+
+// // サーバーからの応答が成功した場合
+// if (response.ok) {
+//   // JSONデータからアイテムの配列を取得
+//   const items = response.data.items;
+
+//   // 各アイテムに対してマーカーを作成し、地図上に表示
+//   items.forEach((item) => {
+//     // Google MapsのLatLngオブジェクトを作成
+//     const position = new google.maps.LatLng(item.latitude, item.longitude);
+
+//     // マーカーを作成し、地図上に表示
+//     const marker = new google.maps.Marker({
+//       position: position, // マーカーの位置
+//       map: map, // 地図オブジェクト
+//       title: item.name, // マーカーに表示するタイトル
+//     });
+//   });
+// }
+
+  
+  
+  
 }
 
 initMap()
