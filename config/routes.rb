@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  
+
   # 顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   scope module: :public do
     root to: 'homes#top'
     resources :stores do
-      resource :favorites, onle: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       resources :store_comments, only: [:create, :destroy]
     end
     # 退会機能追加する
@@ -23,12 +23,14 @@ Rails.application.routes.draw do
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
       member do
-        get :favorites 
+        get :favorites
      end
     end
     resource :map, only: [:show]
+    get '/store/hashtag/:name' => 'stores#hashtag'
+    get '/store/hashtag' => 'stores#hashtag'
   end
-  
+
   namespace :admin do
     root to: 'homes#top'
     resources :stores, only: [:index, :show, :edit, :update]

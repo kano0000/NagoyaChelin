@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_23_101455) do
+ActiveRecord::Schema.define(version: 2024_02_24_112100) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2024_02_23_101455) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(version: 2024_02_23_101455) do
     t.integer "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hashtag_stores", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.integer "hashtag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_hashtag_stores_on_hashtag_id"
+    t.index ["store_id"], name: "index_hashtag_stores_on_store_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -83,6 +99,7 @@ ActiveRecord::Schema.define(version: 2024_02_23_101455) do
     t.integer "user_id"
     t.float "latitude", default: 0.0, null: false
     t.float "longitude", default: 0.0, null: false
+    t.string "hashbody"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,4 +118,6 @@ ActiveRecord::Schema.define(version: 2024_02_23_101455) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "hashtag_stores", "hashtags"
+  add_foreign_key "hashtag_stores", "stores"
 end

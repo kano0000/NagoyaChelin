@@ -1,6 +1,17 @@
 class Public::StoresController < ApplicationController
   before_action :authenticate_user!
-
+  
+  def hashtag
+    @user = current_user
+    if params[:name].nil?
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.stores.count}
+    else
+      @hashtag = Hashtag.find_by(hashname: params[:name])
+      @stores = @hashtag.stores
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.stores.count}
+    end
+  end
+  
   def new
     @store = Store.new
   end
@@ -12,27 +23,13 @@ class Public::StoresController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to stores_path
     else
+      puts @store.errors.full_messages
       render :new
     end
   end
 
-  # def index
-  #   @stores = Store.all
-  #   respond_to do |format|
-  #     format.html
-  #     format.json { render 'index' }
-  #   end
-  # end
-
   def index
-    respond_to do |format|
-      format.html do
-        @stores = Store.all
-      end
-      format.json do
-        @stores = Store.all
-      end
-    end
+    @stores = Store.all.order(created_at: :desc)
   end
 
   def show
@@ -63,7 +60,7 @@ class Public::StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:name, :description, :address, :food_image)
+    params.require(:store).permit(:name, :description, :address, :food_image, :hashbody, hashtag_ids: [])
   end
 
 end

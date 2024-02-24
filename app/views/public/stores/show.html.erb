@@ -5,13 +5,14 @@
         <%= image_tag @store.get_food_image(500,500) %><br>
         <h2 class=py-3><strong><%= @store.name %></strong></h2>
         <p><%= @store.description %></p>
+        <p><%= render_with_hashtags(@store.hashbody) %></p>
         <div>
-          <i class="fa-solid fa-circle-user"></i> 
+          <i class="fa-solid fa-circle-user"></i>
           <%= link_to user_path(@store.user) do %>
-            <%= @store.user.name %>　|　
+            <%= @store.user.name %>　|
           <% end %>
-          <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|　
-          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|　  
+          <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|
+          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|
           <%= render "public/favorites/btn", store: @store %><br>
           <i class="fa-solid fa-location-dot"></i><%= @store.address %>
         </div>
