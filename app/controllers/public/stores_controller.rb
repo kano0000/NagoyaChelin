@@ -3,13 +3,8 @@ class Public::StoresController < ApplicationController
   
   def hashtag
     @user = current_user
-    if params[:name].nil?
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.stores.count}
-    else
-      @hashtag = Hashtag.find_by(hashname: params[:name])
-      @stores = @hashtag.stores
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.stores.count}
-    end
+    @hashtag = Hashtag.find_by(hashname: params[:name])
+    @stores = @hashtag.stores.all.reverse_order
   end
   
   def new
@@ -23,7 +18,6 @@ class Public::StoresController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to stores_path
     else
-      puts @store.errors.full_messages
       render :new
     end
   end

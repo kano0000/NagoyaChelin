@@ -1,4 +1,5 @@
 class Store < ApplicationRecord
+
   geocoded_by :address
   after_validation :geocode
 
@@ -6,21 +7,18 @@ class Store < ApplicationRecord
   has_many :store_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :hashtag_stores, dependent: :destroy
-  has_many :hashtag, through: :hashtag_stores
+  has_many :hashtags, through: :hashtag_stores
 
   has_one_attached :food_image
 
   validates :name, presence: true
   validates :description, presence: true, length: {maximum: 200}
   validates :address, presence: true
-    
-  def hashtags
-    # StoreとHashtagの関連を考慮して適切なメソッドを呼び出す必要があります
-    self.hashtag_stores.map(&:hashtag)
-  end
-  
+  validates :hashbody, presence:true
+
+
   after_create do
-    store = Store.find_by(id: id)
+    store = Store.find_by(id: self.id)
     # hashbodyに打ち込まれたハッシュタグを検出
     hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
@@ -29,9 +27,10 @@ class Store < ApplicationRecord
       store.hashtags << tag
     end
   end
+
   #更新アクション
   before_update do
-    store = Store.find_by(id: id)
+    store = Store.find_by(id: self.id)
     store.hashtags.clear
     hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|

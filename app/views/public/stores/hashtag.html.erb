@@ -1,21 +1,8 @@
 <div class = "container mt-5">
   <div class = "row">
-    <div class = "col-8 mx-auto">
-      <% if params[:name] == nil %>
-        <h2>投稿がありません</h2>
-      <% else %>
-        <h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @stores.count %> 件 </h3>
+    <div class = "col-12 mx-auto">
+      <h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @stores.count %> 件 </h3>
         <%= render "public/stores/index", stores: @stores %>
-      <% end %>
     </div>
   </div>
-</div>
-<!--表示が多い順-->
-<div class= "hashtag-name">
-    <% @hashtags.sort.reverse.each do |count| %>
-        <% count[1].each do |hashtag| %>
-            <p><%= link_to  "##{hashtag.hashname} (#{hashtag.stores.count}) 件","/store/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
-            </p>
-        <% end %>
-    <% end %>
 </div>
