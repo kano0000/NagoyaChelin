@@ -3,10 +3,18 @@
     <div class = "col-12 mx-auto">
       <%= render "public/users/info", user: @user %>
       <div class="border-top">
-        <% if @stores.exists? %>
+        <div class="text-center p-3 tabindex="-1"">
+          <%= link_to user_path(@user), class: "custom-button", :style => "text-decoration: none; color:#333333;" do %>
+            <i class="fa-solid fa-table-cells-large"></i>投稿
+          <% end %>
+          <%= link_to user_path(@user, favorite: "true"), class: "custom-button", :style => "text-decoration: none; color:#333333;" do %>
+            <i class="fa-regular fa-heart"></i>いいね
+          <% end %>
+        </div>
+        <% if params[:view] == 'favorite' %>
           <%= render "public/stores/index", stores: @stores %>
         <% else %>
-          <h2 class="text-center my-3">投稿がありません</h2>
+          <%= render "public/stores/index", stores: @stores %>
         <% end %>
       </div>
     </div>
