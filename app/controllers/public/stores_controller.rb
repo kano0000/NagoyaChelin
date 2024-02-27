@@ -4,7 +4,7 @@ class Public::StoresController < ApplicationController
   def hashtag
     @user = current_user
     @hashtag = Hashtag.find_by(hashname: params[:name])
-    @stores = @hashtag.stores.all.reverse_order
+    @stores = @hashtag.stores.page(params[:page]).reverse_order
   end
 
   def new
@@ -23,7 +23,7 @@ class Public::StoresController < ApplicationController
   end
 
   def index
-    @stores = Store.all.order(created_at: :desc)
+    @stores = Store.page(params[:page]).order(created_at: :desc)
   end
 
   def show

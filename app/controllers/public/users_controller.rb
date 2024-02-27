@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @stores = @user.stores
+    @stores = @user.stores.page(params[:page])
   end
 
   def edit
@@ -22,11 +22,11 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:store_id)
-    @favorite_stores = Store.find(favorites)
+    @favorite_stores = Store.where(id: favorites).page(params[:page])
   end
 
   private
