@@ -1,5 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 .text-red {
   color: #ff0000;
@@ -16,6 +21,7 @@
 footer {
   background-color: #331b16;
   color: #fff;
+  margin-top: auto;
 }
 
 #map {

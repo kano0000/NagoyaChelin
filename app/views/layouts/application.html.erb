@@ -12,19 +12,21 @@
   </head>
 
   <body>
-    <% if request.fullpath.include? "/admin" %>
-      <%= render "layouts/admin_header" %>
-    <% else %>
-      <%= render "layouts/public_header" %>
-    <% end %>
-    <main>
-      <div>
-        <% flash.each do |message_type, message| %>
-          <div class="flash-message <%= message_type %>"><%= message %></div>
-        <% end %>
-      </div>
-      <%= yield %>
-    </main>
-    <%= render "layouts/footer" %>
+    <div class="wrapper">
+      <% if request.fullpath.include? "/admin" %>
+        <%= render "layouts/admin_header" %>
+      <% else %>
+        <%= render "layouts/public_header" %>
+      <% end %>
+      <main>
+        <div>
+          <% flash.each do |message_type, message| %>
+            <div class="flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
+        <%= yield %>
+      </main>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
