@@ -1,5 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
 
+.main-visual {
+  background-image: url("../images/top.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 950px;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+  position: relative;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -41,4 +53,8 @@ footer {
   padding: 10px;
   font-size: 25px;
   text-align: center;
+ }
+
+ .main-visual {
+
  }
