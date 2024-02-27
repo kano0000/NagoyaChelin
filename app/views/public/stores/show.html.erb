@@ -1,39 +1,38 @@
 <div class = "container mt-5">
   <div class = "row">
-      <div class="col-8">
-        <div class="text-center">
-          <%= image_tag @store.get_food_image(500,500) %><br>
-          <h2 class=py-3><strong><%= @store.name %></strong></h2>
-          <p><%= @store.description %></p>
-          <p><%= render_with_hashtags(@store.hashbody) %></p>
-          <div>
-            <i class="fa-solid fa-circle-user"></i>
-            <%= link_to user_path(@store.user) do %>
-              <%= @store.user.name %>　|
-            <% end %>
-            <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|
-            <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|
-            <%= render "public/favorites/btn", store: @store %><br>
-            <i class="fa-solid fa-location-dot"></i><%= @store.address %>
-          </div>
-          <% if @store.user == current_user %>
-            <div class="col-5 mx-auto my-3">
-              <%= link_to edit_store_path(@store), class: "btn btn-warning btn-block" do %>
-                <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-            </div>
+    <div class="col-8">
+      <div class="text-center">
+        <%= image_tag @store.get_food_image(500,500) %><br>
+        <h2 class=py-3><strong><%= @store.name %></strong></h2>
+        <p><%= @store.description %></p>
+        <p><%= render_with_hashtags(@store.hashbody) %></p>
+        <div>
+          <i class="fa-solid fa-circle-user"></i>
+          <%= link_to user_path(@store.user) do %>
+            <%= @store.user.name %>　|
           <% end %>
+          <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|
+          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|
+          <%= render "public/favorites/btn", store: @store %><br>
+          <i class="fa-solid fa-location-dot"></i><%= @store.address %>
         </div>
-        <div class="border-top col-12 mx-auto">
-          <h4 class="m-3">コメント</h4>
-          <%= render "public/store_comments/index", store: @store %>
-          <%= render "public/store_comments/form", store: @store, store_comment: @store_comment %>
-        </div>
+        <% if @store.user == current_user %>
+          <div class="col-5 mx-auto my-3">
+            <%= link_to edit_store_path(@store), class: "btn btn-warning btn-block" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <div class="col-3 offset-1">
-        <h2>同じお店の投稿</h2>
-          <%= render "public/stores/index", stores: @stores %>
+      <div class="border-top col-12 mx-auto">
+        <h4 class="m-3">コメント</h4>
+        <%= render "public/store_comments/index", store: @store %>
+        <%= render "public/store_comments/form", store: @store, store_comment: @store_comment %>
       </div>
+    </div>
+    <div class="col-3 offset-1 scroll-area">
+      <h3 class="title-box">同じお店の投稿</h3>
+      <%= render "public/stores/side_index", stores: @stores %>
     </div>
   </div>
 </div>

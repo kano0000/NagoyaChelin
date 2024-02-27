@@ -29,7 +29,7 @@ class Public::StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
     @store_comment = StoreComment.new
-    @stores = Store.where("address = ? OR name = ?", @store.address, @store.name)
+    @stores = Store.where.not(id: @store.id).where("address = ? OR name = ?", @store.address, @store.name)
   end
 
   def edit

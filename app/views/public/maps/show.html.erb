@@ -1,5 +1,13 @@
-<div class="container">
-  <div id="map"></div>
+<div class="container my-3">
+  <div class = "row">
+    <div class="col-9">
+      <div id="map"></div>
+    </div>
+    <div class="col-3 scroll-area">
+      <h3 class="title-box">お店一覧</h3>
+      <%= render "public/stores/side_index", stores: @stores %>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -21,7 +29,7 @@ function initMap(){
     map: map
   });
 
-  infoWindow[<%= index %>] = new google.maps.InfoWindow({ 
+  infoWindow[<%= index %>] = new google.maps.InfoWindow({
     content: `
       <div class="information container p-0">
         <div class="mb-3 d-flex align-items-center">
@@ -40,7 +48,7 @@ function initMap(){
     `,
   });
 
-  markerEvent(<%= index %>); 
+  markerEvent(<%= index %>);
 <% end %>
 
 }

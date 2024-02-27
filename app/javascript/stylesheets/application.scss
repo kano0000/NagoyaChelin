@@ -22,9 +22,23 @@ footer {
   background-color: #331b16;
   color: #fff;
   margin-top: auto;
+  height: 3rem;
 }
 
 #map {
   width: 100%;
   height: calc(100vh - 88px - 179px);
 }
+
+.scroll-area {
+  height: 80vh;
+  overflow: auto;
+}
+
+.title-box {
+  background-color: #ffc107;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 25px;
+  text-align: center;
+ }
