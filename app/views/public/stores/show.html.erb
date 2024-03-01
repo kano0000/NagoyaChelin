@@ -32,7 +32,11 @@
     </div>
     <div class="col-3 offset-1 scroll-area">
       <h3 class="title-box">同じお店の投稿</h3>
-      <%= render "public/stores/side_index", stores: @stores %>
+      <% if @stores.present? %>
+        <%= render "public/stores/side_index", stores: @stores %>
+      <% else %>
+        <p class="text-center m-3">投稿はありません</p>
+      <% end %>
     </div>
   </div>
 </div>

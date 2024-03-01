@@ -4,6 +4,14 @@
       <div id="map"></div>
     </div>
     <div class="col-3 scroll-area">
+      <div class="my-2">
+        <%= form_with url: search_map_path, method: :get, class: "d-flex" do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= button_tag type: "submit", class: "btn btn-secondary" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
       <h3 class="title-box">お店一覧</h3>
       <%= render "public/stores/side_index", stores: @stores %>
     </div>
@@ -22,7 +30,7 @@ function initMap(){
     zoom: 12,
   });
 
-<% Store.all.each_with_index do |store, index| %>
+<% @stores.each_with_index do |store, index| %>
 
   marker[<%= index %>] = new google.maps.Marker({
     position:  {lat: <%= store.latitude %>, lng: <%= store.longitude %>},
@@ -42,7 +50,6 @@ function initMap(){
         </div>
         <div>
           <p class="font-weight-bold"><i class="fa-solid fa-circle-user"></i> <%= store.user.name %></p>
-          <p class="text-muted"><%#= store.タグ %></p>
         </div>
       </div>
     `,

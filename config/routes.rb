@@ -23,7 +23,9 @@ Rails.application.routes.draw do
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
     end
-    resource :map, only: [:show]
+    resource :map, only: [:show] do
+      get 'search', on: :collection
+    end
     get '/store/hashtag/:name' => 'stores#hashtag'
     get '/store/hashtag' => 'stores#hashtag'
   end

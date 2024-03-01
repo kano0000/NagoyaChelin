@@ -1,7 +1,12 @@
 <div class = "container mt-5">
   <div class = "row">
     <div class = "col-8 mx-auto">
-      <%= render "public/users/index", users: @users %>
+      <h1>followers</h1>
+      <% if @users.present? %>
+        <%= render "public/users/index", users: @users %>
+      <% else %>
+        <p class="text-center">You're not following anyone yet.</p>
+      <% end %>
     </div>
   </div>
 </div>

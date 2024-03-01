@@ -52,4 +52,8 @@ class Store < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  def self.search(keyword)
+    where(["name like? OR hashbody like? OR address like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
+
 end

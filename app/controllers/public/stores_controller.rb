@@ -51,7 +51,7 @@ class Public::StoresController < ApplicationController
     shop.destroy
     redirect_to shops_path
   end
-
+  
   private
 
   def store_params
