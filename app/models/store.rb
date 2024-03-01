@@ -45,7 +45,7 @@ class Store < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/food_no_image.jpg')
       food_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    food_image.variant(resize_to_limit: [width,height]).processed
+    food_image.variant(resize_to_fill: [width,height]).processed
   end
 
   def favorited_by?(user)
