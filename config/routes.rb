@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    root to: 'homes#top'
+    root to: 'users#index'
     resources :stores do
       resource :favorites, only: [:create, :destroy]
       resources :store_comments, only: [:create, :destroy]
