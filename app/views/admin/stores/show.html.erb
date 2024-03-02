@@ -1,0 +1,31 @@
+<div class = "container mt-5">
+  <div class = "row">
+    <div class="col-8">
+      <div class="text-center">
+        <%= image_tag @store.get_food_image(300,300) %><br>
+        <h2 class=py-3><strong><%= @store.name %></strong></h2>
+        <p><%= @store.description %></p>
+        <p><%= @store.hashbody %></p>
+        <div>
+          <i class="fa-solid fa-circle-user"></i>
+          <%= link_to admin_user_path(@store.user) do %>
+            <%= @store.user.name %>　|
+          <% end %>
+          <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|
+          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|
+          <%= render "public/favorites/btn", store: @store %><br>
+          <i class="fa-solid fa-location-dot"></i><%= @store.address %>
+        </div>
+        <!--削除ボタン-->
+      </div>
+    </div>
+    <div class="border-top col-4">
+      <h4 class="m-3">コメント</h4>
+      <% if @store.store_comments.present? %>
+        <%= render "public/store_comments/index", store: @store %>
+      <% else %>
+        <p>コメントはありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

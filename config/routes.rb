@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    root to: 'users#index'
+    root to: 'homes#top'
     resources :stores do
       resource :favorites, only: [:create, :destroy]
       resources :store_comments, only: [:create, :destroy]
@@ -31,9 +31,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: 'homes#top'
-    resources :stores, only: [:index, :show, :edit, :update]
-    resources :users, only: [:index, :show, :edit, :update]
+    root to: 'users#index'
+    resources :stores, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

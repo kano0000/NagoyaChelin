@@ -2,18 +2,16 @@ class Admin::StoresController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    
+    @stores = Store.page(params[:page]).order(created_at: :desc)
   end
   
   def show
-    
+    @store = Store.find(params[:id])
   end
-  
-  def edit
-    
-  end
-  
-  def update
-    
+
+  def destroy
+    store = Store.find(params[:id])
+    store.destroy
+    redirect_to request.referer
   end
 end

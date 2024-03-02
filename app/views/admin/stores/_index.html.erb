@@ -1,0 +1,32 @@
+<% if stores.present? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>店名</th>
+        <th>紹介</th>
+        <th>タグ</th>
+       </tr>
+    </thead>
+    <tbody>
+      <% stores.each do |store| %>
+      <tr>
+        <td>
+          <%= image_tag store.get_food_image(80, 80) %>
+          <div class=small>(<%= store.created_at.strftime("%Y/%m/%d") %>)</div>
+        </td>
+        <td>
+          <%= link_to admin_store_path(store) do %>
+            <%= store.name %>
+          <% end %>
+        </td>
+        <td><%= store.description %></td>
+        <td><%= store.hashbody %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate stores %>
+<% else %>
+  <p class="text-center m-3">投稿はありません</p>
+<% end %>
