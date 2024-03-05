@@ -12,11 +12,10 @@
             <%= @store.user.name %>　|
           <% end %>
           <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|
-          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %>　|
-          <%= render "public/favorites/btn", store: @store %><br>
+          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %><br>
           <i class="fa-solid fa-location-dot"></i><%= @store.address %>
         </div>
-        <!--削除ボタン-->
+        <div class="m-3"><%= link_to "削除", admin_store_path, method: :delete, class: "btn btn-danger btn-sm" %></div>
       </div>
     </div>
     <div class="border-top col-4">

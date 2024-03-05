@@ -12,6 +12,6 @@ class Admin::StoresController < ApplicationController
   def destroy
     store = Store.find(params[:id])
     store.destroy
-    redirect_to request.referer
+    redirect_to admin_stores_path
   end
 end
