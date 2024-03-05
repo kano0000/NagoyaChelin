@@ -31,7 +31,13 @@
           </th>
         </tr>
       </table>
-      <!--退会ボタンの-->
+      <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+        <div class="d-flex align-items-center">
+          <span><%= f.radio_button :is_active, "true" %>有効</span>
+          <span class="pl-3"><%= f.radio_button :is_active, "false" %>退会</span>
+          <span class="pl-3"><%= f.submit "変更", class: "btn btn-sm btn-success" %></span>
+        </div>
+      <% end %>
     </div>
     <div class= "col-md-8 offset-md-1">
       <h2><b>投稿</b></h2>

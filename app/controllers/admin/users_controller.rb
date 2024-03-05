@@ -10,4 +10,19 @@ class Admin::UsersController < ApplicationController
     @stores = @user.stores.page(params[:page]).order(created_at: :desc)
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user)
+    else
+      render :show
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:is_active)
+  end
+
 end
