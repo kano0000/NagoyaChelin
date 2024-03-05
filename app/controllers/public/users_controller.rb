@@ -27,6 +27,13 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_active: false)
+    reset_session
+    redirect_to user_thanks_path(@user)
+  end
 
   private
 

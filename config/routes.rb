@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
+      get 'check' => 'users#check', as: 'check'
+      get 'thanks' => 'users#thanks', as: 'thanks'
+    patch 'withdraw' => 'users#withdraw', as: 'withdraw'
     end
     resource :map, only: [:show] do
       get 'search', on: :collection
