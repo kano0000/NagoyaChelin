@@ -30,6 +30,7 @@ class Public::StoresController < ApplicationController
     @store = Store.find(params[:id])
     @store_comment = StoreComment.new
     @stores = Store.where.not(id: @store.id).where("address = ? OR name = ?", @store.address, @store.name)
+    @report = Report.new
   end
 
   def edit
@@ -47,9 +48,9 @@ class Public::StoresController < ApplicationController
   end
 
   def destroy
-    shop = Shop.find(params[:id])
-    shop.destroy
-    redirect_to shops_path
+    store = Store.find(params[:id])
+    store.destroy
+    redirect_to stores_path
   end
   
   private

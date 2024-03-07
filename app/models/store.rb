@@ -8,6 +8,7 @@ class Store < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :hashtag_stores, dependent: :destroy
   has_many :hashtags, through: :hashtag_stores
+  has_many :reports, dependent: :destroy
 
   has_one_attached :food_image
 

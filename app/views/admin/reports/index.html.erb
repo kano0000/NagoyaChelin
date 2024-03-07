@@ -1,0 +1,27 @@
+<div class= "container py-5 px-sm-0">
+  <% if @reports.blank? %>
+    <h4 class="text-center">報告はありません</h4>
+  <% end %>
+  <% @reports.each do |report| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>報告日</th>
+          <th>報告者</th>
+          <th>投稿</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= report.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= report.user.name %></td>
+          <td><%= report.store.name %></td>
+          <td>
+            <%= link_to "詳細を見る", admin_report_path(report) %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+ </div>

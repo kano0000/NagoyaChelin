@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :stores do
       resource :favorites, only: [:create, :destroy]
       resources :store_comments, only: [:create, :destroy]
+      resource :reports, only: [:new, :create]
+      get :report_complete, on: :member
     end
     # 退会機能追加する
     resources :users, only: [:index, :show, :edit, :update] do
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
     root to: 'users#index'
     resources :stores, only: [:index, :show, :destroy]
     resources :users, only: [:index, :show, :update]
+    resources :reports, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

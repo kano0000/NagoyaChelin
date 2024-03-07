@@ -1,0 +1,31 @@
+<div class = "container mt-5">
+  <div class = "row">
+    <div class="col-5">
+      <div class="text-center">
+        <%= image_tag @store.get_food_image(200,200) %><br>
+        <h2 class=py-3><strong><%= @store.name %></strong></h2>
+        <p><%= @store.description %></p>
+        <p><%= @store.hashbody %></p>
+        <div>
+          <i class="fa-solid fa-circle-user"></i>
+          <%= link_to admin_user_path(@store.user) do %>
+            <%= @store.user.name %>　|
+          <% end %>
+          <%= @store.created_at.strftime("%Y年 %m月 %d日") %>　|
+          <i class="fa-solid fa-comment"></i> <%= @store.store_comments.count %><br>
+          <i class="fa-solid fa-location-dot"></i><%= @store.address %>
+        </div>
+        <div class="m-3"><%= link_to "削除", admin_store_path(@store), method: :delete, class: "btn btn-danger btn-sm" %></div>
+      </div>
+    </div>
+    <div class="border-top col-5">
+      <h4 class="m-3">報告内容</h4>
+      <div>
+        <p><strong>報告日：</strong>　<%= @report.created_at.strftime("%Y年 %m月 %d日") %></p>
+        <p><strong>報告者：</strong>　<%= @report.user.name %></p>
+        <p><strong>報告内容：</strong></p>
+        <p><%= @report.report %></p>
+      </div>
+    </div>
+  </div>
+</div>
