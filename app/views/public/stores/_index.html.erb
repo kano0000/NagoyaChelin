@@ -3,7 +3,7 @@
     <% stores.each_slice(3) do |stores_slice| %>
       <div class="row">
         <% stores_slice.each do |store| %>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="card mt-4 shadow-lg">
               <%= link_to store_path(store.id) do %>
                 <%= image_tag store.get_food_image(350, 350), class: "card-img-top" %>

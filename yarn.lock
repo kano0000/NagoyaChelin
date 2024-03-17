@@ -4114,11 +4114,6 @@ jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jquery-jpostal-ja@^2.14.43:
-  version "2.14.43"
-  resolved "https://registry.yarnpkg.com/jquery-jpostal-ja/-/jquery-jpostal-ja-2.14.43.tgz#0b5df0dff08e56b87c94471fa2f31c743d49db47"
-  integrity sha512-yEo93HQONff0B4YjkX+VFZUX/YQ1ORTdNlmO0eLXn7IFkzJ+0hHnw+KpfZoOBwWEU+rboWNe6i5WPPU1dICgyw==
-
 jquery@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
