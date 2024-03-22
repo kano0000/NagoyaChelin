@@ -1,4 +1,6 @@
 # なごやしゅらん
+<img width="1701" alt="スクリーンショット 2024-03-22 16 05 20" src="https://github.com/kano0000/NagoyaChelin/assets/129806087/d4c7389b-0472-49b2-9d60-13c1692d102f">
+
 
 ## サイト概要
 ### サイトテーマ
@@ -24,3 +26,9 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## 外部API
+- Google Maps API
+
+## 使用素材
+- Canva (https://www.canva.com/)
