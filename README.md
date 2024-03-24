@@ -1,11 +1,7 @@
 # なごやしゅらん
-<img width="1701" alt="スクリーンショット 2024-03-22 16 05 20" src="https://github.com/kano0000/NagoyaChelin/assets/129806087/d4c7389b-0472-49b2-9d60-13c1692d102f">
-
-
+　-　ユーザー画面
 <div><video controls src="https://github.com/kano0000/NagoyaChelin/assets/129806087/9c41ab90-f263-416b-a9ff-8d568cce9635" muted="true"></video></div>
-
-
-
+　-　管理者画面
 <div><video controls src="https://github.com/kano0000/NagoyaChelin/assets/129806087/6a044bb7-5dd1-4227-bb26-e9cb780df24b" muted="true"></video></div>
 
 
